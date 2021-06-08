@@ -75,7 +75,7 @@ export default function Landing(props) {
             <div className="content">
                 <div id="nav">
                     <div className="img_logo">
-                        <a href="#"><img src={logo} style={{ height: "50px", width: "auto" }}></img></a>
+                        <a href="http://www.newsmedialab.wkwsci.ntu.edu.sg/ProductPages/LookingGlass.html"><img src={logo} style={{ height: "50px", width: "auto" }}></img></a>
                     </div>
                     <a id="top"></a>
                     <div className="navbar">
