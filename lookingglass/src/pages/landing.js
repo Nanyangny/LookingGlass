@@ -20,6 +20,11 @@ export default function Landing(props) {
 
         var userInput = document.getElementById("sheet").value;
         // var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0";
+
+        //get language
+        var dropdown = document.getElementById("language");
+        let languageid = dropdown.options[dropdown.selectedIndex].value; // get selected option value
+
         var setLink = document.getElementById("link");
         var setIframe = document.getElementById("iframe");
         var output;
@@ -27,7 +32,7 @@ export default function Landing(props) {
         output = userInput.split('/');
         let sourceID = String(output[5])
 
-        let preview_url = domain + sourceID
+        let preview_url = domain + sourceID + languageid
         // let preview_url = domain_local + sourceID;
         setLink.value = preview_url;
 
@@ -87,8 +92,12 @@ export default function Landing(props) {
                     <p style={{ marginTop: "5%", marginBottom: "5%", lineHeight: "1.5em", fontFamily: 'Krub' }}>Simply copy and paste the URL onto your social media post to publicise it, or use the iframe to embed the Looking Glass widget on your website!</p>
                     <div className="input-group input-group-mb-3 round" style={{ marginTop: "20px" }}>
                         <input type="text" id="sheet" className="form-control round" placeholder="Google Spreadsheet URL" />
-                        <input type="text" className="form-control round" placeholder="Image URL of Logo (optional)" />
-                        <div class="input-group-append round">
+                        <select className="custom-select" id="language">
+                            <option selected>Language to be displayed</option>
+                            <option value="?lang=id">Indonesia</option>
+                            <option value="?lang=en">English</option>
+                        </select>
+                        <div className="input-group-append round">
                             <button onClick={() => Show()} className="btn btn-outline-secondary round" style={{ backgroundColor: "#c11010", width: "80px" }}><i class="bi bi-chevron-right" aria-hidden="true" style={{ color: "white" }}></i></button>
                         </div>
                     </div>

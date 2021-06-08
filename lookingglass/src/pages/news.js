@@ -13,7 +13,7 @@ import {
     useHistory
 
 } from "react-router-dom";
-import TClogo from "../img/TC-logo.png";
+import TClogo from "../img/white-TC-logo.png";
 import Pastconv from './pastConv';
 import loadingGlass from '../img/smol-logo.png'
 import { Helmet } from 'react-helmet';
