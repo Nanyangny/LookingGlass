@@ -195,7 +195,7 @@ export default function Landing(props) {
                             </Col>
                             <Col>
                                 <div className="video">
-                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=bFBv5kjA7g0" target="_blank"><img src={"http://img.youtube.com/vi/bFBv5kjA7g0/0.jpg"} alt="LG-demo" style={{ width: "auto", height: "200px" }} /></a>
+                                <a href="http://www.youtube.com/watch?feature=player_embedded&v=bFBv5kjA7g0https://www.youtube.com/embed/bFBv5kjA7g0" target="_blank"><img src={"http://img.youtube.com/vi/bFBv5kjA7g0/0.jpg"} alt="LG-demo" style={{ width: "auto", height: "200px" }} /></a>
                                     {/* <iframe title="guidetocreate" src="https://www.youtube.com/embed/YWI5caBZziM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                                 </div>
                             </Col>
@@ -274,10 +274,10 @@ export default function Landing(props) {
                                             <h3>Generate Your</h3>
                                             <h3>Looking Glass Page</h3>
                                         </span>
-                                        <p>Paste the spreadsheet URL to the box below and press the red button. Also, enter the URL to your newsroom’s logo. </p>
+                                        <p>Paste the spreadsheet URL to the box below and press the red button. Also, select the language the Looking Glass page should be in. </p>
                                         <div className="input-group input-group-mb-3 round" style={{ marginTop: "20px" }}>
                                             <input type="text" class="form-control round" placeholder="Google Spreadsheet URL" disabled />
-                                            <input type="text" class="form-control round" placeholder="Image URL of Logo" disabled />
+                                            <input type="text" class="form-control round" placeholder="Language to be displayed" disabled />
                                             <div class="input-group-append round">
                                                 <button class="btn btn-outline-secondary round" style={{ backgroundColor: "#C11010", width: "80px", pointerEvents: "none" }}><i class="bi bi-chevron-right" aria-hidden="true" style={{ color: "white" }}></i></button>
                                             </div>
