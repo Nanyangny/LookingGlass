@@ -62,13 +62,25 @@ export default function Landing(props) {
         alert("You have copied the Looking Glass " + copyText.id);
     }
     function Show() {
-        Generate();
-        var x = document.getElementById("pane-1");
-        if (x.style.display == "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+
+        var userInput = document.getElementById("sheet").value;
+
+        // verify the google spreadsheet url
+        var re = /https:\/\/docs.google.com\/spreadsheets\/d\/([\w]{10,})\/[\w]*/g;
+        if(userInput.match(re)!== null){
+            Generate();
+            var x = document.getElementById("pane-1");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
+        else{
+            alert("Invalid Google Spreadsheet URL");
+            document.getElementById("sheet").value = '';
+        }
+        
     }
     return (
         <div>
@@ -102,7 +114,7 @@ export default function Landing(props) {
                         </div>
                     </div>
                 </div>
-                <div id="pane-1">
+                <div id="pane-1" style={{display:"None"}}>
                     <div className="row">
                         <div className="col"><br></br><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></div>
                         <div className="col-sm-2">
