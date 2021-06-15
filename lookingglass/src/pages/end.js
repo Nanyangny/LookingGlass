@@ -5,6 +5,7 @@ import creative_commons from "../img/creative-commons.png";
 
 export default function End(props){
 
+    // You may change these to your newsroom title
     const title = "The Conversation";
     const newsroom_url = "https://theconversation.com/id/in-english"
 
