@@ -16,6 +16,7 @@ export default function End(props){
                     <div className="logo"><i className="bi bi-check-circle"></i></div>
                     <div id="h3-title">{props.translation('Ending_section')}</div>
                 <div id="double-line"></div>
+                {/* here for the Creative Common section */}
                 <div id="certificate">
                     <img src={creative_commons} style={{width: "auto", height: "20px"}} alt="creative commons"/>
                     <h3>{title} {props.translation('Creative_Commons')}</h3>

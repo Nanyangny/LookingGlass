@@ -12,39 +12,7 @@ export default function Landing(props) {
     let looking_glass_temp = "https://docs.google.com/spreadsheets/d/1yv_4Kk22-8aTWgeTm1hJb_MUg2UuEuKI6zEO7NUpJvY/copy";
     let nml_link="http://www.newsmedialab.wkwsci.ntu.edu.sg/index.html"
 
-    function Generate() {
-        let domain = "https://looking-glass.vercel.app/topics/"
-        let domain_local = "http://localhost:3000/topics/"
-        let iframe_setting_start = "<iframe src='"
-        let iframe_setting_end = "' max-width='400px' height='650px' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>"
 
-        var userInput = document.getElementById("sheet").value;
-        // var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0";
-
-        //get language
-        var dropdown = document.getElementById("language");
-        let languageid = dropdown.options[dropdown.selectedIndex].value; // get selected option value
-
-        var setLink = document.getElementById("link");
-        var setIframe = document.getElementById("iframe");
-        var output;
-
-        output = userInput.split('/');
-        let sourceID = String(output[5])
-
-        let preview_url = domain + sourceID + languageid
-        // let preview_url = domain_local + sourceID;
-        setLink.value = preview_url;
-
-        let iframe = iframe_setting_start + preview_url + iframe_setting_end;
-        setIframe.value = iframe;
-
-        //place preview link to button
-        var preview = document.getElementById("preview-link");
-        preview.setAttribute(
-            "href", encodeURI(preview_url)
-        );
-    }
     function Copy(choice) {
         if (choice == 1) {
             var copyText = document.getElementById("link");
@@ -62,13 +30,56 @@ export default function Landing(props) {
         alert("You have copied the Looking Glass " + copyText.id);
     }
     function Show() {
-        Generate();
-        var x = document.getElementById("pane-1");
-        if (x.style.display == "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
+
+        var userInputField = document.getElementById("sheet");
+        let domain = "https://looking-glass.vercel.app/topics/"
+        let domain_local = "http://localhost:3000/topics/"
+        let iframe_setting_start = "<iframe src='"
+        let iframe_setting_end = "' max-width='400px' height='650px' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>"
+        // var userInput = "https://docs.google.com/spreadsheets/d/1Du4YuahwwOS5OSN1MSsn5J2Bz2jPW2iTiQYbFJPWIJI/edit#gid=0";
+
+        //get language
+        var dropdown = document.getElementById("language");
+        let languageid = dropdown.options[dropdown.selectedIndex].value; // get selected option value
+        // verify the google spreadsheet url
+        var re = /https:\/\/docs.google.com\/spreadsheets\/d\/(.{10,})\/[\w]*/g;
+        if(userInputField.value.match(re)!== null && !languageid.includes('Language')){
+            var setLink = document.getElementById("link");
+            var setIframe = document.getElementById("iframe");
+            var output;
+    
+            output = userInputField.value.split('/');
+            let sourceID = String(output[5])
+    
+            let preview_url = domain + sourceID + languageid
+            // let preview_url = domain_local + sourceID;
+            setLink.value = preview_url;
+    
+            let iframe = iframe_setting_start + preview_url + iframe_setting_end;
+            setIframe.value = iframe;
+    
+            //place preview link to button
+            var preview = document.getElementById("preview-link");
+            preview.setAttribute(
+                "href", encodeURI(preview_url)
+            );
+            var x = document.getElementById("pane-1");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
+        else if(userInputField.value.match(re)=== null){
+            alert("Invalid Google Spreadsheet URL");
+            document.getElementById("sheet").value = '';
+        }
+        else if(languageid.includes('Language')){
+            alert("Select a display language");
+        }
+           
+        
+        
     }
     return (
         <div>
@@ -102,7 +113,7 @@ export default function Landing(props) {
                         </div>
                     </div>
                 </div>
-                <div id="pane-1">
+                <div id="pane-1" style={{display:"None"}}>
                     <div className="row">
                         <div className="col"><br></br><span style={{ color: "white" }}>Your Personalised <br></br> Looking Glass <br></br>Is Ready!</span></div>
                         <div className="col-sm-2">
