@@ -80,7 +80,7 @@ function MainArticle(props) {
 
                         <div id="content">
                         {article_info['og']['url'].includes('theconversation.com') &&<img src={TClogo} alt="TC logo" style={{ height: "25px", width: "auto", marginBottom: "3%" }} />}
-                            <span>{moment(article_info['pub_time']).format('MMM DD, YYYY')}</span>
+                            <span>{article_info['pub_time']? moment(article_info['pub_time']).format('MMM DD, YYYY'):""}</span>
                             <div className="topic_headline">{article_info['og']['title'] || "title"}</div>
                             <div className="topic_summary">{article_info['og']['description'] || "summary"}</div>
                         </div>
